@@ -1595,6 +1595,412 @@
       box-shadow: 0 18px 40px rgba(0,0,0,0.28);
     }
 
+    /* ========== SCORM 发布成功：老师监控（classin 窗口风格）========== */
+    .scorm-monitor-layout {
+      display: none;
+      flex: 1;
+      flex-direction: column;
+      min-height: 0;
+      overflow: hidden;
+    }
+    .page-quiz-result.scorm-mode .scorm-monitor-layout { display: flex; }
+    .page-quiz-result.scorm-mode .result-header,
+    .page-quiz-result.scorm-mode .result-activity-preview,
+    .page-quiz-result.scorm-mode .result-body-scroll,
+    .page-quiz-result.scorm-mode .bottom-bar { display: none !important; }
+
+    /* 标题栏：复用新建页 scorm-topbar-inner 风格 */
+    .scorm-monitor-titlebar {
+      width: min(var(--demo-page-width), 100%);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      min-height: 56px;
+      background: #fff;
+      border: 1px solid #ececec;
+      border-bottom: none;
+      border-radius: 18px 18px 0 0;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.22);
+      flex-shrink: 0;
+    }
+
+    .scorm-monitor-window {
+      width: min(var(--demo-page-width), 100%);
+      margin: 0 auto;
+      background: #fff;
+      border-left: 1px solid #ececec;
+      border-right: 1px solid #ececec;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      min-height: 0;
+    }
+    .scorm-monitor-titlebar-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+    }
+    .scorm-monitor-title-text {
+      font-size: 14px;
+      font-weight: 600;
+      color: #1f2329;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .scorm-monitor-status-badge {
+      font-size: 12px;
+      font-weight: 500;
+      color: #00b96b;
+      flex-shrink: 0;
+    }
+    .scorm-monitor-titlebar-controls {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      flex-shrink: 0;
+    }
+    .scorm-win-btn {
+      width: 28px;
+      height: 28px;
+      border: none;
+      background: transparent;
+      border-radius: 6px;
+      color: #8f959e;
+      font-size: 14px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      transition: background 0.15s;
+    }
+    .scorm-win-btn:hover { background: #ecedf0; color: #1f2329; }
+    .scorm-win-btn-close:hover { background: #fee2e2; color: #dc2626; }
+    .scorm-win-btn-refresh { font-size: 13px; }
+    .scorm-monitor-body {
+      display: flex;
+      flex: 1;
+      min-height: 320px;
+    }
+    .scorm-info-sidebar {
+      width: 220px;
+      flex-shrink: 0;
+      background: #f7f8fa;
+      border-right: 1px solid #e8eaed;
+      padding: 20px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .scorm-info-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 13px;
+      color: #3c4149;
+      line-height: 1.5;
+    }
+    .scorm-info-row .scorm-info-icon {
+      width: 16px;
+      flex-shrink: 0;
+      margin-top: 1px;
+      font-size: 13px;
+      color: #8f959e;
+    }
+    .scorm-file-card {
+      margin-top: 4px;
+      background: #fff;
+      border: 1px solid #e8eaed;
+      border-radius: 8px;
+      padding: 10px 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .scorm-file-badge {
+      width: 32px;
+      height: 32px;
+      background: #fff3e0;
+      border: 1px solid #ffcc80;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      font-weight: 700;
+      color: #e65100;
+      text-transform: uppercase;
+      flex-shrink: 0;
+    }
+    .scorm-file-info {
+      flex: 1;
+      min-width: 0;
+    }
+    .scorm-file-name {
+      font-size: 12px;
+      font-weight: 500;
+      color: #1f2329;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .scorm-file-size {
+      font-size: 11px;
+      color: #8f959e;
+      margin-top: 2px;
+    }
+    .scorm-file-eye-btn {
+      width: 28px;
+      height: 28px;
+      border: 1px solid #e8eaed;
+      background: #fff;
+      border-radius: 6px;
+      color: #8f959e;
+      font-size: 13px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .scorm-file-eye-btn:hover { background: #f0f2f5; color: #1f2329; }
+    .scorm-student-panel {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      background: #fff;
+    }
+    .scorm-tabs-bar {
+      display: flex;
+      align-items: center;
+      padding: 0 16px;
+      border-bottom: 1px solid #e8eaed;
+      flex-shrink: 0;
+    }
+    .scorm-tab {
+      padding: 12px 4px;
+      margin-right: 20px;
+      font-size: 14px;
+      font-weight: 500;
+      color: #8f959e;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      transition: color 0.15s, border-color 0.15s;
+      white-space: nowrap;
+    }
+    .scorm-tab.active {
+      color: #00b96b;
+      border-bottom-color: #00b96b;
+    }
+    .scorm-monitor-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 16px;
+      border-bottom: 1px solid #f0f2f5;
+      flex-shrink: 0;
+    }
+    .scorm-search-wrap {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex: 1;
+      max-width: 300px;
+      background: #f5f6f7;
+      border: 1px solid #e8eaed;
+      border-radius: 6px;
+      padding: 6px 10px;
+    }
+    .scorm-search-wrap .scorm-search-icon { color: #8f959e; font-size: 13px; }
+    .scorm-search-input {
+      border: none;
+      background: transparent;
+      outline: none;
+      font-size: 13px;
+      color: #1f2329;
+      flex: 1;
+      min-width: 0;
+    }
+    .scorm-search-input::placeholder { color: #b0b7c3; }
+    .scorm-view-toggle {
+      width: 30px;
+      height: 30px;
+      border: 1px solid #e8eaed;
+      background: #f5f6f7;
+      border-radius: 6px;
+      color: #8f959e;
+      font-size: 14px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .scorm-view-toggle:hover { background: #ecedf0; color: #1f2329; }
+    .scorm-student-table-wrap {
+      flex: 1;
+      overflow-y: auto;
+    }
+    .scorm-student-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+    .scorm-student-table th {
+      padding: 10px 16px;
+      text-align: left;
+      font-size: 13px;
+      font-weight: 500;
+      color: #8f959e;
+      background: #fafbfc;
+      border-bottom: 1px solid #e8eaed;
+      white-space: nowrap;
+    }
+    .scorm-student-table th .sort-arrow {
+      color: #c4c9d4;
+      font-size: 11px;
+      margin-left: 3px;
+    }
+    .scorm-student-table td {
+      padding: 12px 16px;
+      border-bottom: 1px solid #f0f2f5;
+      color: #3c4149;
+      vertical-align: middle;
+    }
+    .scorm-student-table tr:last-child td { border-bottom: none; }
+    .scorm-student-table tr:hover td { background: #fafbfc; }
+    .scorm-student-name-cell {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .scorm-student-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #e8eaed;
+      flex-shrink: 0;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 600;
+      color: #fff;
+    }
+    .scorm-student-avatar.av-1 { background: #4f46e5; }
+    .scorm-student-avatar.av-2 { background: #059669; }
+    .scorm-student-avatar.av-3 { background: #dc2626; }
+    .scorm-student-name-text { font-size: 14px; font-weight: 500; color: #1f2329; }
+    .scorm-student-submit-time { font-size: 12px; color: #8f959e; margin-top: 1px; }
+    .scorm-status-pass {
+      display: inline-block;
+      padding: 2px 8px;
+      background: #f0fff4;
+      color: #00b96b;
+      border-radius: 4px;
+      font-size: 13px;
+      font-weight: 500;
+    }
+    .scorm-status-fail {
+      display: inline-block;
+      padding: 2px 8px;
+      background: #fff1f0;
+      color: #cf1322;
+      border-radius: 4px;
+      font-size: 13px;
+      font-weight: 500;
+    }
+    .scorm-score-val { color: #f97316; font-weight: 600; font-size: 14px; }
+    .scorm-grade-btn {
+      display: inline-block;
+      padding: 4px 12px;
+      border: 1px solid #e8eaed;
+      border-radius: 4px;
+      font-size: 13px;
+      color: #3c4149;
+      cursor: pointer;
+      background: #fff;
+      transition: background 0.15s, border-color 0.15s;
+    }
+    .scorm-grade-btn:hover { background: #f0f2f5; border-color: #c4c9d4; }
+    .scorm-dash { color: #c4c9d4; }
+
+    /* SCORM 监控底部栏 */
+    .scorm-monitor-footer-wrap {
+      display: flex;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .scorm-monitor-footer {
+      width: min(var(--demo-page-width), 100%);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 24px;
+      background: #fff;
+      border: 1px solid #ececec;
+      border-top: 1px solid #eee;
+      border-radius: 0 0 18px 18px;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.22);
+    }
+    .scorm-monitor-footer-time {
+      font-size: 14px;
+      color: #666;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .scorm-monitor-footer-time .timer-val {
+      font-weight: 600;
+      color: #333;
+      font-variant-numeric: tabular-nums;
+      letter-spacing: 0.04em;
+    }
+    .scorm-btn-end {
+      padding: 8px 24px;
+      background: #52c41a;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .scorm-btn-end:hover:not(:disabled) { background: #389e0d; }
+    .scorm-btn-end:disabled {
+      background: #d9d9d9 !important;
+      color: #fff;
+      cursor: not-allowed;
+    }
+    /* toast 提示 */
+    .scorm-toast {
+      position: fixed;
+      bottom: 48px;
+      left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      background: rgba(0,0,0,0.8);
+      color: #fff;
+      padding: 10px 22px;
+      border-radius: 8px;
+      font-size: 14px;
+      z-index: 99999;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s, transform 0.25s;
+      white-space: nowrap;
+    }
+    .scorm-toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
     /* ========== 发布结果页：教师实时查看学生作答（Figma 风格）========== */
     .page-quiz-result .result-header {
       background: #fff;
@@ -3289,6 +3695,134 @@
         <button class="btn-end" id="btnTogglePractice" style="margin-left:12px;background:#f59e0b;">暂停练习</button>
       </div>
     </div>
+
+    <!-- SCORM 发布成功：老师监控窗口 -->
+    <div class="scorm-monitor-layout" id="scormMonitorLayout">
+      <!-- 标题栏（与新建页 scorm-topbar-inner 保持一致） -->
+      <div class="scorm-monitor-titlebar">
+        <div class="scorm-monitor-titlebar-left">
+          <div class="scorm-monitor-title-text" id="scormMonitorTitle">快人一步-适配触屏和移动端</div>
+          <div class="scorm-monitor-status-badge">进行中</div>
+        </div>
+        <div class="scorm-monitor-titlebar-controls">
+          <button class="scorm-win-btn scorm-win-btn-refresh" title="刷新">↺</button>
+          <button class="scorm-win-btn" title="更多">⋮</button>
+          <button class="scorm-win-btn" title="最小化">−</button>
+          <button class="scorm-win-btn" title="最大化">□</button>
+          <button class="scorm-win-btn scorm-win-btn-close" id="scormMonitorClose" title="关闭">×</button>
+        </div>
+      </div>
+      <!-- 主体（与新建页 scorm-body 保持一致） -->
+      <div class="scorm-monitor-window">
+        <!-- 主体内容 -->
+        <div class="scorm-monitor-body">
+          <!-- 左侧信息栏 -->
+          <div class="scorm-info-sidebar">
+            <div class="scorm-info-row">
+              <span class="scorm-info-icon">👤</span>
+              <span>肖艳帅</span>
+            </div>
+            <div class="scorm-info-row">
+              <span class="scorm-info-icon">📅</span>
+              <span>6月25日 星期四 14:07 至 无截止时间</span>
+            </div>
+            <div class="scorm-info-row">
+              <span class="scorm-info-icon">🏆</span>
+              <span>满分：100 分</span>
+            </div>
+            <div class="scorm-file-card">
+              <div class="scorm-file-badge">sco</div>
+              <div class="scorm-file-info">
+                <div class="scorm-file-name">快人一步-scorm-classin-2004....</div>
+                <div class="scorm-file-size">23.00KB</div>
+              </div>
+              <button class="scorm-file-eye-btn" id="scormMonitorPreviewBtn" title="预览">👁</button>
+            </div>
+          </div>
+          <!-- 右侧学生面板 -->
+          <div class="scorm-student-panel">
+            <!-- Tabs -->
+            <div class="scorm-tabs-bar">
+              <span class="scorm-tab active" data-tab="all">全部学生 (3)</span>
+              <span class="scorm-tab" data-tab="grade">待评分 (0)</span>
+            </div>
+            <!-- 工具栏 -->
+            <div class="scorm-monitor-toolbar">
+              <div class="scorm-search-wrap">
+                <span class="scorm-search-icon">🔍</span>
+                <input type="text" class="scorm-search-input" id="scormSearchStudent" placeholder="搜索学生" />
+              </div>
+              <button class="scorm-view-toggle" title="切换视图">⊞</button>
+            </div>
+            <!-- 学生表格 -->
+            <div class="scorm-student-table-wrap">
+              <table class="scorm-student-table">
+                <thead>
+                  <tr>
+                    <th>姓名 <span class="sort-arrow">↕</span></th>
+                    <th>学习时长 <span class="sort-arrow">↕</span></th>
+                    <th>状态</th>
+                    <th>SCO结果 <span class="sort-arrow">↕</span></th>
+                    <th>成绩 <span class="sort-arrow">↕</span></th>
+                  </tr>
+                </thead>
+                <tbody id="scormStudentTableBody">
+                  <tr>
+                    <td>
+                      <div class="scorm-student-name-cell">
+                        <div class="scorm-student-avatar av-1">台</div>
+                        <div>
+                          <div class="scorm-student-name-text">台湾省账号</div>
+                          <div class="scorm-student-submit-time">完成于 6月25日 14:10</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>00:00:00</td>
+                    <td><span class="scorm-status-pass">通过</span></td>
+                    <td>130%</td>
+                    <td><span class="scorm-score-val">100</span></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="scorm-student-name-cell">
+                        <div class="scorm-student-avatar av-2">小</div>
+                        <div class="scorm-student-name-text">小学生</div>
+                      </div>
+                    </td>
+                    <td><span class="scorm-dash">-</span></td>
+                    <td><span class="scorm-dash">-</span></td>
+                    <td><span class="scorm-dash">-</span></td>
+                    <td><span class="scorm-grade-btn">评分</span></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="scorm-student-name-cell">
+                        <div class="scorm-student-avatar av-3">匠</div>
+                        <div class="scorm-student-name-text">匠仁树</div>
+                      </div>
+                    </td>
+                    <td><span class="scorm-dash">-</span></td>
+                    <td><span class="scorm-dash">-</span></td>
+                    <td><span class="scorm-dash">-</span></td>
+                    <td><span class="scorm-grade-btn">评分</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- SCORM 监控底部栏 -->
+      <div class="scorm-monitor-footer-wrap">
+        <div class="scorm-monitor-footer">
+          <span class="scorm-monitor-footer-time">
+            已发布时间 <span class="timer-val" id="scormPublishedTimer">00:00:00</span>
+          </span>
+          <button class="scorm-btn-end" id="btnEndScorm">结束SCORM</button>
+        </div>
+      </div>
+    </div>
+
     </div><!-- /page-body-wrap -->
     <aside class="page-req-sidebar">
       <div class="req-sidebar-title">需求说明 · 教师监控</div>
@@ -3296,56 +3830,40 @@
         <div class="req-sidebar-item">
           <div class="req-sidebar-index">1</div>
           <div class="req-sidebar-text">
-            <strong>SCORM 课件预览（新起页面）</strong>
-            老师预览 SCORM 课件时，在新标签页或独立窗口打开，不在当前页面内嵌，预览时同步到远端：
+            <strong>学生列表</strong>
             <ol class="req-sub-list">
+              <li>Tab 区分：「全部学生」显示所有学生；「待评分」仅显示已提交但尚未评分的学生。</li>
+              <li>列信息：姓名（含提交时间）、学习时长、状态、SCO结果、成绩，支持按列排序。</li>
+              <li>搜索框：按姓名实时模糊过滤。</li>
             </ol>
           </div>
         </div>
         <div class="req-sidebar-item">
           <div class="req-sidebar-index">2</div>
           <div class="req-sidebar-text">
-            <strong>风险预警（结构化看板）</strong>
-            将班级整体状况合并为一张结构化卡片，分三个区块展示：
-            <ol class="req-sub-list">
-              <li><strong>班级结论：</strong>已完成人数/总人数、通过率（通过率 = 通过人数 / 已完成人数）、平均分（已提交人数总分 / 已提交人数）、帮助老师一眼判断活动整体状态。</li>
-              <li><strong>共性薄弱：</strong>错误率最高的 1–3 道题，每行显示正确率与错误人数。点击「查看学生」在下方筛选栏动态追加该题错误学生 Chip（同一时间只保留一个；再次点击同一按钮则取消筛选，恢复全部）。</li>
-              <li><strong>需要关注：</strong>低于通过线的学生，支持「查看详情」（进入该学生答题详情视图）。</li>
-            </ol>
+            <strong>已发布时间</strong>
+            显示活动发布至今的时长（精确到秒，实时滚动），用于提醒老师活动已进行多久，辅助判断是否应结束或催促未提交学生。
           </div>
         </div>
         <div class="req-sidebar-item">
           <div class="req-sidebar-index">3</div>
           <div class="req-sidebar-text">
-            <strong>学生列表操作</strong>
-            <ol class="req-sub-list">
-              <li>筛选 Tab：全部 / 未交 / 已交；从风险预警点击「查看学生」后，动态追加题目错误 Chip（如「错第3题」），两种视图均响应同一套筛选逻辑。</li>
-              <li>搜索框：按姓名实时模糊过滤，与当前激活筛选联动。</li>
-              <li>点击学生卡片可查看该学生最后提交的结果报告页。</li>
-              <li><strong>已发布时间：</strong>显示活动发布至今的时长（精确到秒，实时滚动）。用于提醒老师活动已进行多久，辅助判断是否应结束或催促未交学生。</li>
-              <li>结束作答：点击后活动结束，停留在当前监控页。活动结束前不可关闭窗口，点击关闭时提示"请先结束作答，再关闭此窗口"。</li>
-              <li>活动进行中关闭或离开教室，活动仍在进行，学生在教室外依然可继续作答。</li>
-              <li>暂停练习：发布后默认为状态为学生端可操作，按钮显示“暂停练习”，点击后按钮变为“开始练习”此时学生不可操作。</li>
-            </ol>
+            <strong>结束SCORM</strong>
+            点击后活动结束，按钮变为「已结束」不可再点击，学生端将无法继续作答。
           </div>
         </div>
         <div class="req-sidebar-item">
           <div class="req-sidebar-index">4</div>
           <div class="req-sidebar-text">
-            <strong>网格视图 / 列表视图</strong>
-            <ol class="req-sub-list">
-              <li>网格视图（卡片式）：显示学生头像、进度条、通过状态，适合课中快速扫视全班。</li>
-              <li>列表视图（逐题矩阵）：每列为一道题（Q1–Qn），每格显示正确 / 错误 / 进行中 / 未作答状态图标，右侧保留状态与成绩，适合课后横向对比。</li>
-              <li><strong>默认规则：</strong>教室内默认网格视图；教室外/回顾场景默认列表视图。</li>
-              <li>记住用户上一次手动切换的视图状态，下次进入同一活动时沿用。</li>
-            </ol>
+            <strong>关闭按钮限制</strong>
+            活动结束前不可关闭窗口，点击右上角 × 时提示「请先结束作答，再关闭此窗口」。
           </div>
         </div>
         <div class="req-sidebar-item">
           <div class="req-sidebar-index">5</div>
           <div class="req-sidebar-text">
-            <strong>教师详情页数据隔离</strong>
-            教师详情视图不向远端同步
+            <strong>活动持续性</strong>
+            活动进行中，老师关闭窗口或离开教室，活动仍在进行，学生在教室外依然可继续作答。
           </div>
         </div>
       </div>
@@ -5638,12 +6156,22 @@ function renderReport() {
         };
       }
 
+      var scormMonitorLayout = document.getElementById('scormMonitorLayout');
+      var scormMonitorTitle = document.getElementById('scormMonitorTitle');
+      var scormMonitorClose = document.getElementById('scormMonitorClose');
+      var scormMonitorPreviewBtn = document.getElementById('scormMonitorPreviewBtn');
+
       function applyResultContext(nextContext) {
         resultContext = Object.assign({}, resultContext, nextContext || {});
         if (resultHeaderTitle) resultHeaderTitle.textContent = resultContext.title;
         if (resultHeaderSubtitle) resultHeaderSubtitle.textContent = resultContext.subtitle;
         if (resultBottomTime) resultBottomTime.textContent = resultContext.time;
         if (btnEndResultActivity) btnEndResultActivity.textContent = resultContext.endLabel;
+        // 根据类型切换布局
+        if (pageQuizResult) {
+          pageQuizResult.classList.toggle('scorm-mode', resultContext.studentPageType === 'scorm');
+        }
+        if (scormMonitorTitle) scormMonitorTitle.textContent = resultContext.title || '快人一步-适配触屏和移动端';
         // btnOpenStudentQuiz 已移除，无需更新
       }
 
@@ -5655,6 +6183,12 @@ function renderReport() {
         var nextLocation = resultContext.studentPageType === 'scorm' ? 'monitor-scorm' : 'monitor-quiz';
         setRoadmapStep(resultContext.studentPageType === 'scorm' ? 'monitor' : 'home');
         updateUiLocation(nextLocation);
+        // SCORM 模式：启动已发布计时器
+        if (resultContext.studentPageType === 'scorm') {
+          startScormTimer();
+        } else {
+          stopScormTimer();
+        }
       }
 
       function openScormStudentPage() {
@@ -5862,6 +6396,90 @@ function renderReport() {
         }
       });
       if (resultBackToDashboardBtn) resultBackToDashboardBtn.addEventListener('click', showResultDashboard);
+
+      // SCORM 监控窗口关闭（活动未结束时拦截）
+      var scormEnded = false;
+      if (scormMonitorClose) {
+        scormMonitorClose.addEventListener('click', function() {
+          if (!scormEnded) {
+            showScormToast('请先结束作答，再关闭此窗口');
+            return;
+          }
+          pageQuizResult.classList.remove('show');
+          pageQuizResult.classList.remove('scorm-mode');
+          stopScormTimer();
+          scormEnded = false;
+          setRoadmapStep('home');
+          updateUiLocation('demo-home');
+        });
+      }
+      // SCORM 监控预览按钮
+      if (scormMonitorPreviewBtn) {
+        scormMonitorPreviewBtn.addEventListener('click', function() {
+          openScormStudentPage();
+        });
+      }
+      // SCORM 监控 Tab 切换
+      if (scormMonitorLayout) {
+        scormMonitorLayout.querySelectorAll('.scorm-tab').forEach(function(tab) {
+          tab.addEventListener('click', function() {
+            scormMonitorLayout.querySelectorAll('.scorm-tab').forEach(function(t) { t.classList.remove('active'); });
+            tab.classList.add('active');
+          });
+        });
+      }
+
+      // ===== SCORM 已发布计时器 =====
+      var scormTimerEl = document.getElementById('scormPublishedTimer');
+      var scormTimerInterval = null;
+
+      function startScormTimer() {
+        var startTime = Date.now();
+        if (scormTimerInterval) clearInterval(scormTimerInterval);
+        // 重置状态
+        scormEnded = false;
+        var btn = document.getElementById('btnEndScorm');
+        if (btn) { btn.disabled = false; btn.textContent = '结束SCORM'; }
+        function tick() {
+          var elapsed = Math.floor((Date.now() - startTime) / 1000);
+          var h = Math.floor(elapsed / 3600);
+          var m = Math.floor((elapsed % 3600) / 60);
+          var s = elapsed % 60;
+          if (scormTimerEl) {
+            scormTimerEl.textContent =
+              String(h).padStart(2, '0') + ':' +
+              String(m).padStart(2, '0') + ':' +
+              String(s).padStart(2, '0');
+          }
+        }
+        tick();
+        scormTimerInterval = setInterval(tick, 1000);
+      }
+
+      function stopScormTimer() {
+        if (scormTimerInterval) { clearInterval(scormTimerInterval); scormTimerInterval = null; }
+      }
+
+      // ===== Toast 提示 =====
+      var scormToastEl = document.getElementById('scormToast');
+      function showScormToast(msg) {
+        if (!scormToastEl) return;
+        scormToastEl.textContent = msg;
+        scormToastEl.classList.add('show');
+        setTimeout(function() { scormToastEl.classList.remove('show'); }, 3000);
+      }
+
+      // ===== 结束SCORM 按钮 =====
+      var btnEndScorm = document.getElementById('btnEndScorm');
+      if (btnEndScorm) {
+        btnEndScorm.addEventListener('click', function() {
+          scormEnded = true;
+          btnEndScorm.disabled = true;
+          btnEndScorm.textContent = '已结束';
+          stopScormTimer();
+          showScormToast('活动已结束，学生端将无法作答');
+        });
+      }
 
       // ===== 视图切换：网格 / 列表 =====
       var btnViewGrid = document.getElementById('btnViewGrid');
@@ -6633,5 +7251,6 @@ function renderReport() {
       restoreSavedLocation();
     })();
   </script>
+  <div class="scorm-toast" id="scormToast"></div>
 </body>
 </html>
