@@ -1801,7 +1801,7 @@
     .scorm-monitor-toolbar {
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      gap: 12px;
       padding: 10px 16px;
       border-bottom: 1px solid #f0f2f5;
       flex-shrink: 0;
@@ -1811,13 +1811,17 @@
       align-items: center;
       gap: 6px;
       flex: 1;
-      max-width: 300px;
       background: #f5f6f7;
       border: 1px solid #e8eaed;
       border-radius: 6px;
       padding: 6px 10px;
+      transition: border-color 0.15s;
     }
-    .scorm-search-wrap .scorm-search-icon { color: #8f959e; font-size: 13px; }
+    .scorm-search-wrap:focus-within {
+      border-color: #00b96b;
+      background: #fff;
+    }
+    .scorm-search-wrap .scorm-search-icon { color: #8f959e; font-size: 13px; flex-shrink: 0; }
     .scorm-search-input {
       border: none;
       background: transparent;
@@ -1828,6 +1832,18 @@
       min-width: 0;
     }
     .scorm-search-input::placeholder { color: #b0b7c3; }
+    .scorm-toolbar-right {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+    .scorm-toolbar-divider {
+      width: 1px;
+      height: 18px;
+      background: #e8eaed;
+      flex-shrink: 0;
+    }
     .scorm-view-toggle {
       width: 30px;
       height: 30px;
@@ -1840,8 +1856,85 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      transition: background 0.15s, color 0.15s, border-color 0.15s;
+      flex-shrink: 0;
     }
-    .scorm-view-toggle:hover { background: #ecedf0; color: #1f2329; }
+    .scorm-view-toggle:hover {
+      background: #e8f9f1;
+      color: #00b96b;
+      border-color: #b7ecd4;
+    }
+
+    /* 显示成绩 开关 */
+    .score-toggle-wrap {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      height: 30px;
+      padding: 0 10px;
+      font-size: 12px;
+      font-weight: 500;
+      color: #6b7280;
+      cursor: pointer;
+      user-select: none;
+      white-space: nowrap;
+      border: 1px solid #e8eaed;
+      border-radius: 6px;
+      background: #f5f6f7;
+      transition: background 0.15s, border-color 0.15s, color 0.15s;
+    }
+    .score-toggle-wrap:hover {
+      background: #ecedf0;
+      color: #374151;
+    }
+    .score-toggle-wrap.on {
+      background: #e8f9f1;
+      border-color: #b7ecd4;
+      color: #00875a;
+    }
+    .score-toggle-switch {
+      width: 28px;
+      height: 16px;
+      background: #d1d5db;
+      border-radius: 8px;
+      position: relative;
+      transition: background 0.2s;
+      flex-shrink: 0;
+    }
+    .score-toggle-switch::after {
+      content: '';
+      position: absolute;
+      left: 2px;
+      top: 2px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #fff;
+      transition: left 0.18s cubic-bezier(.4,0,.2,1);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.18);
+    }
+    .score-toggle-wrap.on .score-toggle-switch {
+      background: #00b96b;
+    }
+    .score-toggle-wrap.on .score-toggle-switch::after {
+      left: 14px;
+    }
+
+    /* SCORM 监控表格 - 隐藏 SCO结果 & 成绩 列 */
+    #scormStudentTable.hide-score th:nth-child(4),
+    #scormStudentTable.hide-score td:nth-child(4),
+    #scormStudentTable.hide-score th:nth-child(5),
+    #scormStudentTable.hide-score td:nth-child(5) {
+      display: none;
+    }
+
+    /* 结果监控 - 隐藏卡片成绩徽章和列表成绩列 */
+    #resultDashboardView.result-scores-hidden .card-score-badge {
+      display: none;
+    }
+    #resultDashboardView.result-scores-hidden .score-col {
+      display: none;
+    }
     .scorm-student-table-wrap {
       flex: 1;
       overflow-y: auto;
@@ -1941,6 +2034,7 @@
       width: min(var(--demo-page-width), 100%);
       display: flex;
       align-items: center;
+      justify-content: flex-end;
       justify-content: space-between;
       padding: 12px 24px;
       background: #fff;
@@ -3501,7 +3595,7 @@
     <div class="result-body-scroll">
       <div class="result-container">
         <!-- Dashboard：数据分析 + 学生卡片 -->
-        <div class="result-dashboard-view show" id="resultDashboardView">
+        <div class="result-dashboard-view show result-scores-hidden" id="resultDashboardView">
           <!-- 风险预警 -->
           <div class="result-risk-card" id="resultRiskCard">
             <!-- 标题栏 -->
@@ -3577,6 +3671,10 @@
               <div class="result-search-wrap">
                 <span style="position:absolute;left:10px;top:50%;transform:translateY(-50%);color:#9ca3af;font-size:13px;">🔍</span>
                 <input type="text" id="resultSearchStudent" placeholder="搜索学生姓名..." />
+              </div>
+              <div id="resultScoreToggle" class="score-toggle-wrap" title="显示/隐藏成绩">
+                <span class="score-toggle-switch"></span>
+                <span>显示成绩</span>
               </div>
               <button class="result-view-btn active" id="btnViewGrid" title="网格视图">⊞</button>
               <button class="result-view-btn" id="btnViewList" title="列表视图">☰</button>
@@ -3752,11 +3850,22 @@
                 <span class="scorm-search-icon">🔍</span>
                 <input type="text" class="scorm-search-input" id="scormSearchStudent" placeholder="搜索学生" />
               </div>
-              <button class="scorm-view-toggle" title="切换视图">⊞</button>
+              <div class="scorm-toolbar-right">
+                <div id="scormScoreToggle" class="score-toggle-wrap" title="显示/隐藏成绩">
+                  <span class="score-toggle-switch"></span>
+                  <span>显示成绩</span>
+                </div>
+                <div class="scorm-toolbar-divider"></div>
+                <button class="scorm-view-toggle" id="btnScormDownload" title="下载数据">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M7 1v8M4 6l3 3 3-3M2 11h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </button>
+              </div>
             </div>
             <!-- 学生表格 -->
             <div class="scorm-student-table-wrap">
-              <table class="scorm-student-table">
+              <table class="scorm-student-table hide-score" id="scormStudentTable">
                 <thead>
                   <tr>
                     <th>姓名 <span class="sort-arrow">↕</span></th>
@@ -3815,9 +3924,6 @@
       <!-- SCORM 监控底部栏 -->
       <div class="scorm-monitor-footer-wrap">
         <div class="scorm-monitor-footer">
-          <span class="scorm-monitor-footer-time">
-            已发布时间 <span class="timer-val" id="scormPublishedTimer">00:00:00</span>
-          </span>
           <button class="scorm-btn-end" id="btnEndScorm">结束SCORM</button>
         </div>
       </div>
@@ -6467,6 +6573,46 @@ function renderReport() {
         scormToastEl.textContent = msg;
         scormToastEl.classList.add('show');
         setTimeout(function() { scormToastEl.classList.remove('show'); }, 3000);
+      }
+
+      // ===== SCORM 监控 - 下载数据 =====
+      var btnScormDownload = document.getElementById('btnScormDownload');
+      if (btnScormDownload) {
+        btnScormDownload.addEventListener('click', function() {
+          var table = document.getElementById('scormStudentTable');
+          if (!table) return;
+          var rows = Array.from(table.querySelectorAll('tr'));
+          var lines = rows.map(function(row) {
+            return Array.from(row.querySelectorAll('th, td')).map(function(cell) {
+              return '"' + cell.innerText.replace(/"/g, '""').trim() + '"';
+            }).join(',');
+          });
+          var csv = '\uFEFF' + lines.join('\n');
+          var blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+          var url = URL.createObjectURL(blob);
+          var a = document.createElement('a');
+          a.href = url; a.download = 'SCORM学生数据.csv'; a.click();
+          URL.revokeObjectURL(url);
+        });
+      }
+
+      // ===== 显示成绩 开关 =====
+      var scormScoreToggle = document.getElementById('scormScoreToggle');
+      var scormStudentTable = document.getElementById('scormStudentTable');
+      if (scormScoreToggle && scormStudentTable) {
+        scormScoreToggle.addEventListener('click', function() {
+          var isOn = scormScoreToggle.classList.toggle('on');
+          scormStudentTable.classList.toggle('hide-score', !isOn);
+        });
+      }
+
+      var resultScoreToggle = document.getElementById('resultScoreToggle');
+      var resultDashboardView = document.getElementById('resultDashboardView');
+      if (resultScoreToggle && resultDashboardView) {
+        resultScoreToggle.addEventListener('click', function() {
+          var isOn = resultScoreToggle.classList.toggle('on');
+          resultDashboardView.classList.toggle('result-scores-hidden', !isOn);
+        });
       }
 
       // ===== 结束SCORM 按钮 =====
