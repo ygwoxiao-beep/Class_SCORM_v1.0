@@ -217,55 +217,273 @@
       display: flex;
       overflow: hidden;
     }
-    .main-window .nav {
+    .main-window .course-sidebar {
       display: none;
-    }
-    .main-window .nav-item {
-      padding: 10px 20px;
-      font-size: 14px;
-      color: #666;
-      cursor: pointer;
-    }
-    .main-window .nav-item.active { background: #e8f4ff; color: #1890ff; font-weight: 500; }
-    .main-window .nav-section { font-size: 12px; color: #999; padding: 8px 20px; margin-top: 8px; }
-    .main-window .content {
-      flex: 1;
-      padding: 20px 24px 24px;
+      flex-direction: column;
+      width: 220px;
+      flex-shrink: 0;
+      background: #f7f7f7;
+      border-right: 1px solid #ececec;
+      padding: 16px 0 48px;
       overflow-y: auto;
+      position: relative;
     }
-    .main-window .content-header {
+    body.demo-roadmap-visible .main-window .course-sidebar {
+      display: flex;
+    }
+    .course-sidebar .sidebar-class-header {
       display: flex;
       align-items: center;
-      gap: 18px;
-      margin-bottom: 20px;
+      gap: 10px;
+      padding: 4px 16px 18px;
     }
-    .main-window .content-header .header-copy {
-      min-width: 0;
+    .course-sidebar .sidebar-class-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: #e8e8e8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
     }
-    .main-window .content-header .header-title {
-      display: block;
-      font-size: 20px;
+    .course-sidebar .sidebar-class-name {
+      font-size: 14px;
       font-weight: 700;
       color: #1f1f1f;
-      line-height: 1.2;
-      margin-bottom: 4px;
+      line-height: 1.3;
     }
-    .main-window .content-header .header-subtitle {
-      font-size: 13px;
+    .course-sidebar .sidebar-class-org {
+      font-size: 12px;
       color: #8c8c8c;
+      margin-top: 2px;
     }
-    .main-window .content-header .btn-new {
-      margin-left: auto;
-      padding: 8px 20px;
-      background: #1890ff;
+    .course-sidebar .nav-section {
+      font-size: 12px;
+      color: #8c8c8c;
+      padding: 10px 16px 6px;
+      margin-top: 4px;
+    }
+    .course-sidebar .nav-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 2px 10px;
+      padding: 8px 10px;
+      font-size: 13px;
+      color: #595959;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .course-sidebar .nav-item:hover {
+      background: #efefef;
+    }
+    .course-sidebar .nav-item.active {
+      background: #e8e8e8;
+      color: #1f1f1f;
+      font-weight: 600;
+    }
+    .course-sidebar .nav-item-muted {
+      color: #bfbfbf;
+    }
+    .course-sidebar .nav-item-icon {
+      width: 16px;
+      text-align: center;
+      font-size: 13px;
+      flex-shrink: 0;
+      opacity: 0.7;
+    }
+    .course-sidebar .sidebar-bell {
+      position: absolute;
+      right: 14px;
+      bottom: 14px;
+      width: 32px;
+      height: 32px;
+      border: none;
+      background: transparent;
+      color: #8c8c8c;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 8px;
+    }
+    .course-sidebar .sidebar-bell:hover {
+      background: #ececec;
+    }
+    .main-window .content {
+      flex: 1;
+      min-width: 0;
+      padding: 20px 24px 24px;
+      overflow-y: auto;
+      background: #fff;
+    }
+    .content-home .course-page-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .content-home .course-page-title {
+      font-size: 28px;
+      font-weight: 700;
+      color: #1f1f1f;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+    }
+    .content-home .course-page-toolbar {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-shrink: 0;
+    }
+    .content-home .toolbar-icon-btn {
+      width: 34px;
+      height: 34px;
+      border: none;
+      background: transparent;
+      border-radius: 8px;
+      color: #595959;
+      font-size: 16px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .content-home .toolbar-icon-btn:hover {
+      background: #f5f5f5;
+    }
+    .content-home .toolbar-icon-btn .badge {
+      position: absolute;
+      top: 2px;
+      right: 2px;
+      min-width: 14px;
+      height: 14px;
+      padding: 0 4px;
+      border-radius: 999px;
+      background: #1f1f1f;
+      color: #fff;
+      font-size: 9px;
+      font-weight: 700;
+      line-height: 14px;
+      text-align: center;
+    }
+    .content-home .course-page-toolbar .btn-new {
+      margin-left: 6px;
+      padding: 8px 22px;
+      background: #000;
       color: #fff;
       border: none;
-      border-radius: 6px;
+      border-radius: 999px;
       font-size: 14px;
+      font-weight: 500;
       cursor: pointer;
+      transition: background 0.15s;
     }
-    .main-window .content-header .btn-new:hover { background: #40a9ff; }
-    .main-window .content-header .btn-new.is-hidden { display: none; }
+    .content-home .course-page-toolbar .btn-new:hover {
+      background: #333;
+    }
+    .content-home .course-page-toolbar .btn-new.is-hidden {
+      display: none;
+    }
+    .content-home .task-group {
+      margin-bottom: 8px;
+    }
+    .content-home .task-group-header {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 0;
+      font-size: 15px;
+      font-weight: 600;
+      color: #1f1f1f;
+      cursor: pointer;
+      user-select: none;
+    }
+    .content-home .task-group-header .chevron {
+      font-size: 12px;
+      color: #8c8c8c;
+    }
+    .content-home .task-group-desc {
+      font-size: 13px;
+      line-height: 1.75;
+      color: #8c8c8c;
+      margin-bottom: 12px;
+      padding-left: 18px;
+    }
+    .content-home .task-group-desc .expand-link {
+      color: #8c8c8c;
+      cursor: pointer;
+      margin-left: 4px;
+    }
+    .content-home .task-list {
+      border-top: 1px solid #f0f0f0;
+    }
+    .content-home .task-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 14px 0;
+      border-bottom: 1px solid #f0f0f0;
+    }
+    .content-home .task-item-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 6px;
+      background: #f5f5f5;
+      border: 1px solid #e8e8e8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 9px;
+      font-weight: 700;
+      color: #8c8c8c;
+      flex-shrink: 0;
+      letter-spacing: -0.02em;
+    }
+    .content-home .task-item-body {
+      flex: 1;
+      min-width: 0;
+    }
+    .content-home .task-item-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: #1f1f1f;
+      margin-bottom: 6px;
+    }
+    .content-home .task-item-meta {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 6px;
+      font-size: 12px;
+      color: #8c8c8c;
+    }
+    .content-home .task-tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 500;
+      line-height: 1.4;
+    }
+    .content-home .task-tag.green {
+      background: #52c41a;
+      color: #fff;
+    }
+    .content-home .task-tag.gray {
+      background: #f0f0f0;
+      color: #595959;
+    }
+    .content-home .task-item-draft {
+      align-self: center;
+      font-size: 12px;
+      color: #d9d9d9;
+      flex-shrink: 0;
+    }
 
     .toolbar-right {
       display: none;
@@ -801,11 +1019,11 @@
       .global-demo-roadmap .demo-roadmap {
         flex-wrap: nowrap;
       }
-      .main-window .content-header {
+      .content-home .course-page-header {
         flex-wrap: wrap;
       }
-      .main-window .content-header .btn-new {
-        margin-left: 0;
+      .content-home .course-page-toolbar {
+        flex-wrap: wrap;
       }
       .classroom {
         flex-direction: column;
@@ -1541,58 +1759,35 @@
       align-items: stretch;
       gap: 16px;
       padding: 12px 20px 18px;
-      background:
-        radial-gradient(circle at top right, rgba(110, 231, 255, 0.18), transparent 28%),
-        linear-gradient(135deg, #071a3d, #102d6b);
+      background: #1a1a2e;
     }
     .page-scorm-student.show { display: flex; }
-    .page-scorm-student .scorm-student-header {
-      height: 64px;
-      padding: 0 20px 0 24px;
+    .page-scorm-student .scorm-monitor-layout {
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background: rgba(4, 12, 32, 0.76);
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-      backdrop-filter: blur(14px);
-      color: #eff6ff;
-      flex-shrink: 0;
+      flex: 1;
+      flex-direction: column;
+      min-height: 0;
+      overflow: hidden;
     }
-    .page-scorm-student .scorm-student-title {
-      font-size: 18px;
-      font-weight: 700;
-      letter-spacing: 0.02em;
-    }
-    .page-scorm-student .scorm-student-subtitle {
-      font-size: 13px;
-      color: #adc7ff;
-      margin-top: 4px;
-    }
-    .page-scorm-student .scorm-student-close {
-      width: 40px;
-      height: 40px;
-      border: 1px solid rgba(255,255,255,0.12);
-      background: rgba(255,255,255,0.06);
-      color: #eff6ff;
-      border-radius: 12px;
-      font-size: 18px;
-      cursor: pointer;
-    }
-    .page-scorm-student .scorm-student-close:hover {
-      background: rgba(255,255,255,0.12);
+    .page-scorm-student .scorm-monitor-window.scorm-student-window {
+      flex: 1;
+      min-height: 0;
+      border-bottom: 1px solid #ececec;
+      border-radius: 0 0 18px 18px;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.22);
     }
     .page-scorm-student .scorm-student-frame-wrap {
       flex: 1;
       min-height: 0;
-      padding: 12px;
+      display: flex;
+      background: #fff;
     }
     .page-scorm-student .scorm-student-frame {
       width: 100%;
       height: 100%;
       border: none;
-      border-radius: 24px;
-      background: transparent;
-      box-shadow: 0 18px 40px rgba(0,0,0,0.28);
+      border-radius: 0 0 18px 18px;
+      background: #fff;
     }
 
     /* ========== SCORM 发布成功：老师监控（classin 窗口风格）========== */
@@ -3218,7 +3413,7 @@
     <div class="demo-roadmap" id="demoRoadmap">
       <div class="demo-roadmap-step active" data-step="home" data-index="1">
         <div class="step-title">默认首页</div>
-        <div class="step-desc">展示活动页</div>
+        <div class="step-desc">展示主课程页</div>
       </div>
       <div class="demo-roadmap-step" data-step="scorm-create" data-index="2">
         <div class="step-title">新建SCORM</div>
@@ -3246,20 +3441,29 @@
       <div class="video-cell"><div class="avatar"></div>学生E</div>
     </div>
     <div class="main-window">
-      <div class="nav">
-        <div class="nav-section">Course</div>
-        <div class="nav-item active">Fall Semester</div>
-        <div class="nav-item">Spring Semester</div>
-        <div class="nav-section">Blackboard</div>
-        <div class="nav-item">Survey Report</div>
-        <div class="nav-item">Performance</div>
-        <div class="nav-item">Agents</div>
-        <div class="nav-item">AI Tutor</div>
+      <div class="nav course-sidebar">
+        <div class="sidebar-class-header">
+          <div class="sidebar-class-avatar">🏛</div>
+          <div>
+            <div class="sidebar-class-name">东东的测试班级</div>
+            <div class="sidebar-class-org">翼鸥集团</div>
+          </div>
+        </div>
+        <div class="nav-section">课程</div>
+        <div class="nav-item active"><span class="nav-item-icon">📂</span>主课程</div>
+        <div class="nav-item"><span class="nav-item-icon">📅</span>课节</div>
+        <div class="nav-item"><span class="nav-item-icon">📘</span>5年级数学培训</div>
+        <div class="nav-item nav-item-muted"><span class="nav-item-icon">＋</span>新班级</div>
+        <div class="nav-section">共创</div>
+        <div class="nav-item"><span class="nav-item-icon">📝</span>协作笔记（示例模板）</div>
+        <div class="nav-item"><span class="nav-item-icon">📋</span>课程表（示例模板）</div>
+        <div class="nav-item"><span class="nav-item-icon">🏠</span>班级主页（示例模板）</div>
+        <div class="nav-item"><span class="nav-item-icon">ℹ</span>关于共创</div>
+        <div class="nav-item nav-item-muted"><span class="nav-item-icon">＋</span>新页面</div>
+        <div class="nav-item"><span class="nav-item-icon">🗑</span>回收站</div>
+        <button class="sidebar-bell" type="button" aria-label="通知">🔔</button>
       </div>
       <div class="content content-home">
-        <div class="content-header">
-          <button class="btn-new" id="btnNewMain">新建</button>
-        </div>
         <div class="product-panel show" id="productOverview">
           <div class="product-overview-hero">
             <div class="eyebrow">Product Brief</div>
@@ -3283,48 +3487,67 @@
           <div class="product-overview-note">`产品demo` 页保留当前完整演示流程，用于说明“课件转互动课件”在教师端发布、SCORM 创建、课堂监控和学生端作答中的可行交互形态。</div>
         </div>
         <div class="product-panel" id="productDemo">
-          <h2 class="home-title">发布活动</h2>
-          <div class="section-title">通用活动</div>
-          <div class="activity-grid-hero">
-            <div class="activity-card-hero" data-activity="class">
-              <div class="icon-wrap">⌘</div>
-              <div>
-                <div class="title">课堂</div>
-                <div class="desc">多模式实时师生互动授课，AI 赋能课堂分析与智能章节总结</div>
-              </div>
-            </div>
-            <div class="activity-card-hero" data-activity="work">
-              <div class="icon-wrap">✎</div>
-              <div>
-                <div class="title">作业</div>
-                <div class="desc">支持图片、语音、视频多格式作业提交，AI 智能自动批改</div>
-              </div>
+          <div class="course-page-header">
+            <h1 class="course-page-title">主课程</h1>
+            <div class="course-page-toolbar">
+              <button class="toolbar-icon-btn" type="button" title="排序" aria-label="排序">⇅</button>
+              <button class="toolbar-icon-btn has-badge" type="button" title="筛选" aria-label="筛选">⫶<span class="badge">1</span></button>
+              <button class="toolbar-icon-btn" type="button" title="更多" aria-label="更多">···</button>
+              <button class="btn-new" id="btnNewMain" type="button">新建</button>
             </div>
           </div>
-          <div class="activity-grid">
-            <div class="activity-card quiz" data-activity="quiz" id="cardQuizHome"><div class="icon">✓</div><span class="label">测验</span></div>
-            <div class="activity-card" data-activity="video"><div class="icon">◔</div><span class="label">录播课</span></div>
-            <div class="activity-card" data-activity="resource"><div class="icon">▣</div><span class="label">学习资料</span></div>
-            <div class="activity-card" data-activity="sign"><div class="icon">◌</div><span class="label">打卡</span></div>
-            <div class="activity-card" data-activity="discuss"><div class="icon">◜</div><span class="label">讨论</span></div>
-            <div class="activity-card" data-activity="card"><div class="icon">▤</div><span class="label">答题卡</span></div>
-            <div class="activity-card" data-activity="scorm"><div class="icon">⇄</div><span class="label">开放接口(SCORM)</span></div>
+          <div class="task-group">
+            <div class="task-group-header">
+              <span class="chevron">▼</span>
+              <span>任务群一：壮志浪迹的前半生 (3)</span>
+            </div>
+            <div class="task-group-desc">
+              本任务群围绕唐代诗人李白「壮志浪迹的前半生」展开，包含生平梳理、代表作品赏析与课堂互动练习。学生将通过 SCORM 课件完成知识学习与测验。<span class="expand-link">展开</span>
+            </div>
+            <div class="task-list">
+              <div class="task-item">
+                <div class="task-item-icon">sco+</div>
+                <div class="task-item-body">
+                  <div class="task-item-title">scorm</div>
+                  <div class="task-item-meta">
+                    <span class="task-tag green">SCORM | 进行中</span>
+                    <span>无截止时间</span>
+                    <span>|</span>
+                    <span>于沛东</span>
+                    <span>|</span>
+                    <span>已提交 0/8</span>
+                  </div>
+                </div>
+              </div>
+              <div class="task-item">
+                <div class="task-item-icon">sco+</div>
+                <div class="task-item-body">
+                  <div class="task-item-title">scorm</div>
+                  <div class="task-item-meta">
+                    <span class="task-tag green">SCORM | 进行中</span>
+                    <span>无截止时间</span>
+                    <span>|</span>
+                    <span>于沛东</span>
+                    <span>|</span>
+                    <span>已提交 0/8</span>
+                  </div>
+                </div>
+              </div>
+              <div class="task-item">
+                <div class="task-item-icon">sco+</div>
+                <div class="task-item-body">
+                  <div class="task-item-title">scorm 作业</div>
+                  <div class="task-item-meta">
+                    <span class="task-tag gray">SCORM</span>
+                    <span>7月6日 今天 16:23 开始</span>
+                    <span>|</span>
+                    <span>于沛东</span>
+                  </div>
+                </div>
+                <span class="task-item-draft">草稿</span>
+              </div>
+            </div>
           </div>
-          <div class="section-title">英语 AI 智能教学</div>
-          <div class="activity-grid activity-grid-4">
-            <div class="activity-card"><span class="new-tag">热门</span><div class="icon">✦</div><span class="label">依据教材AI批量添加</span></div>
-            <div class="activity-card"><span class="new-tag">热门</span><div class="icon">≋</div><span class="label">跟读(AI口语卡)</span></div>
-            <div class="activity-card"><div class="icon">♫</div><span class="label">听写</span></div>
-            <div class="activity-card"><div class="icon">◫</div><span class="label">背诵</span></div>
-          </div>
-          <div class="section-title">语文 AI 智能教学</div>
-          <div class="activity-grid activity-grid-4">
-            <div class="activity-card"><span class="new-tag">热门</span><div class="icon">✦</div><span class="label">依据教材AI批量添加</span></div>
-            <div class="activity-card"><div class="icon">≋</div><span class="label">朗读</span></div>
-            <div class="activity-card"><div class="icon">♫</div><span class="label">字词听写</span></div>
-            <div class="activity-card"><div class="icon">◫</div><span class="label">课文背诵</span></div>
-          </div>
-
         </div>
       </div>
     </div>
@@ -3553,6 +3776,19 @@
           <div class="req-sidebar-text">
             <strong>拖堂不影响提交</strong>
             拖堂时间不影响发布操作，也不影响学生继续提交。
+          </div>
+        </div>
+        <div class="req-sidebar-item">
+          <div class="req-sidebar-index">3</div>
+          <div class="req-sidebar-text">
+            <strong>发布</strong>
+            点击发布，学生端直接进入 SCORM 页面，可以操作。
+          </div>
+        </div>
+        <div class="req-sidebar-item">
+          <div class="req-sidebar-index">4</div>
+          <div class="req-sidebar-text">
+            <strong>FOCUS版本解除管控</strong>
           </div>
         </div>
       </div>
@@ -3804,7 +4040,6 @@
         </div>
         <div class="scorm-monitor-titlebar-controls">
           <button class="scorm-win-btn scorm-win-btn-refresh" title="刷新">↺</button>
-          <button class="scorm-win-btn" title="更多">⋮</button>
           <button class="scorm-win-btn" title="最小化">−</button>
           <button class="scorm-win-btn" title="最大化">□</button>
           <button class="scorm-win-btn scorm-win-btn-close" id="scormMonitorClose" title="关闭">×</button>
@@ -3944,18 +4179,13 @@
             </ol>
           </div>
         </div>
-        <div class="req-sidebar-item">
-          <div class="req-sidebar-index">2</div>
-          <div class="req-sidebar-text">
-            <strong>已发布时间</strong>
-            显示活动发布至今的时长（精确到秒，实时滚动），用于提醒老师活动已进行多久，辅助判断是否应结束或催促未提交学生。
-          </div>
+   
         </div>
         <div class="req-sidebar-item">
           <div class="req-sidebar-index">3</div>
           <div class="req-sidebar-text">
             <strong>结束SCORM</strong>
-            点击后活动结束，按钮变为「已结束」不可再点击，学生端将无法继续作答。
+            点击后活动结束，按钮变为「已结束」不可再点击，学生端将无法继续作答。此时学生端显示页面跟随教师窗口的变化（应显示教师端的活动详情页）。
           </div>
         </div>
         <div class="req-sidebar-item">
@@ -4016,20 +4246,28 @@
   <!-- ========== SCORM 学生端（嵌入静态页面）========== -->
   <div class="page-scorm-student" id="pageScormStudent">
     <div class="page-body-wrap">
-      <div class="scorm-student-header">
-        <div>
-          <div class="scorm-student-title">SCORM 学生端作答</div>
-          <div class="scorm-student-subtitle">快人一步 - 互动闯关课件</div>
+      <div class="scorm-monitor-layout">
+        <div class="scorm-monitor-titlebar">
+          <div class="scorm-monitor-titlebar-left">
+            <div class="scorm-monitor-title-text" id="scormStudentWindowTitle">快人一步-适配触屏和移动端</div>
+            <div class="scorm-monitor-status-badge"></div>
+          </div>
+          <div class="scorm-monitor-titlebar-controls">
+            <button class="scorm-win-btn" type="button" title="最小化">−</button>
+            <button class="scorm-win-btn" type="button" title="最大化">□</button>
+            <button class="scorm-win-btn scorm-win-btn-close" type="button" id="closeScormStudent" title="关闭">×</button>
+          </div>
         </div>
-        <button type="button" class="scorm-student-close" id="closeScormStudent">×</button>
-      </div>
-      <div class="scorm-student-frame-wrap">
-        <iframe
-          id="scormStudentFrame"
-          class="scorm-student-frame"
-          title="SCORM 学生端课件"
-          src="about:blank"
-        ></iframe>
+        <div class="scorm-monitor-window scorm-student-window">
+          <div class="scorm-student-frame-wrap">
+            <iframe
+              id="scormStudentFrame"
+              class="scorm-student-frame"
+              title="SCORM 学生端课件"
+              src="about:blank"
+            ></iframe>
+          </div>
+        </div>
       </div>
     </div><!-- /page-body-wrap -->
     <aside class="page-req-sidebar page-req-sidebar--dark">
@@ -6278,6 +6516,10 @@ function renderReport() {
           pageQuizResult.classList.toggle('scorm-mode', resultContext.studentPageType === 'scorm');
         }
         if (scormMonitorTitle) scormMonitorTitle.textContent = resultContext.title || '快人一步-适配触屏和移动端';
+        var scormStudentWindowTitle = document.getElementById('scormStudentWindowTitle');
+        if (scormStudentWindowTitle && resultContext.studentPageType === 'scorm') {
+          scormStudentWindowTitle.textContent = resultContext.title || '快人一步-适配触屏和移动端';
+        }
         // btnOpenStudentQuiz 已移除，无需更新
       }
 
@@ -7173,8 +7415,8 @@ function renderReport() {
           var pageScormStudent = document.getElementById('pageScormStudent');
           var scormStudentFrame = document.getElementById('scormStudentFrame');
           var scormStudentSrcdoc = document.getElementById('scormStudentSrcdoc');
-          var studentTitle = document.querySelector('.scorm-student-title');
-          if (studentTitle) studentTitle.textContent = 'SCORM 教师预览';
+          var scormStudentWindowTitle = document.getElementById('scormStudentWindowTitle');
+          if (scormStudentWindowTitle) scormStudentWindowTitle.textContent = 'SCORM 教师预览';
           if (scormStudentFrame && scormStudentSrcdoc) {
             scormStudentFrame.srcdoc = scormStudentSrcdoc.value;
           }
